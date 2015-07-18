@@ -649,6 +649,11 @@
         this.input.on({
           'keyup.colorpicker': $.proxy(this.keyup, this)
         });
+
+        this.input.on({
+          'change.colorpicker': $.proxy(this.change, this)
+        });
+
         if (this.component === false) {
           this.element.on({
             'focus.colorpicker': $.proxy(this.show, this)
@@ -990,6 +995,9 @@
           'touchend.colorpicker': this.mouseup
         });
         return false;
+      },
+      change: function(e) {
+        this.keyup(e);
       },
       keyup: function(e) {
         if ((e.keyCode === 38)) {
